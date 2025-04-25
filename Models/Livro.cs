@@ -22,8 +22,12 @@ namespace Biblioteca.Models
 
 
         [Column("Data de Publicação")]
-        [Display(Name = "Data de Publicação")]
-        public int AnoPublicacao { get; set; }
+        [Display(Name = "Ano de Publicação")]
+        public string AnoPublicacao { get; set; }
+
+        [Column("Sinopse")]
+        [Display(Name = "Sinopse")]
+        public string Sinopse { get; set; }
 
     }
 }

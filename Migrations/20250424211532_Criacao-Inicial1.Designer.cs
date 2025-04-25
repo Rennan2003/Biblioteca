@@ -2,6 +2,7 @@
 using Biblioteca.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Biblioteca.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20250424211532_Criacao-Inicial1")]
+    partial class CriacaoInicial1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
@@ -23,20 +26,14 @@ namespace Biblioteca.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("Id");
 
-                    b.Property<string>("AnoPublicacao")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
+                    b.Property<int>("AnoPublicacao")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("Data de Publicação");
 
                     b.Property<string>("Autor")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("Autor");
-
-                    b.Property<string>("Sinopse")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Sinopse");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
