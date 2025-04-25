@@ -19,4 +19,15 @@ html {
 
 body {
   margin-bottom: 60px;
+  
+}
+
+.containero {
+    width: 300px;
+    height: fit-content;
+    margin: 0px auto 0px;
+}
+.my-image {
+    width: 100%;
+    height: 100%; 
 }
