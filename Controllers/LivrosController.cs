@@ -53,7 +53,7 @@ namespace Biblioteca.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Autor,AnoPublicacao,Sinopse")] Livro livro)
+        public async Task<IActionResult> Create(Livro livro)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Biblioteca.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Autor,AnoPublicacao,Sinopse")] Livro livro)
+        public async Task<IActionResult> Edit(int id, Livro livro)
         {
             if (id != livro.Id)
             {
@@ -138,13 +138,20 @@ namespace Biblioteca.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var livro = await _context.Livros.FindAsync(id);
-            if (livro != null)
+            try
             {
-                _context.Livros.Remove(livro);
-            }
+                var livro = await _context.Livros.FindAsync(id);
+                if (livro != null)
+                {
+                    _context.Livros.Remove(livro);
+                }
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+            }
+            catch 
+            {
+                throw;
+            }
             return RedirectToAction(nameof(Index));
         }
 
